@@ -69,10 +69,15 @@ defmodule Linguist.Vocabulary do
       loaded_source =
         cond do
           is_binary(source) && String.ends_with?(source, [".yml", ".yaml"]) ->
+            @external_resource source
             Linguist.Vocabulary._load_yaml_file(source)
+
           is_binary(source) ->
             @external_resource source
-            Code.eval_file(source) |> elem(0)
+            source
+            |> Code.eval_file()
+            |> elem(0)
+
           true ->
             source
         end
@@ -88,6 +93,7 @@ defmodule Linguist.Vocabulary do
   """
   def _load_yaml_file(source) do
     {:ok, [result]} = YamlElixir.read_all_from_file(source)
+
     result
     |> Enum.reduce([], &Linguist.Vocabulary._yaml_reducer/2)
   end
@@ -99,6 +105,7 @@ defmodule Linguist.Vocabulary do
   def _yaml_reducer({key, value}, acc) when is_binary(value) do
     [{String.to_atom(key), value} | acc]
   end
+
   def _yaml_reducer({key, value}, acc) do
     [{String.to_atom(key), Enum.reduce(value, [], &Linguist.Vocabulary._yaml_reducer/2)} | acc]
   end
