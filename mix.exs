@@ -7,7 +7,7 @@ defmodule Linguist.Mixfile do
     [
       app: :linguist,
       version: "0.2.1",
-      compilers: Mix.compilers ++ [:cldr],
+      compilers: Mix.compilers() ++ [:cldr],
       elixir: "~> 1.6",
       deps: deps(),
       package: [
@@ -27,10 +27,14 @@ defmodule Linguist.Mixfile do
 
   defp deps do
     [
-      {:ex_cldr, "~> 1.5"},
-      {:jason, "~> 1.0"},
+      {:ex_cldr, "~> 2.0"},
+      {:ex_cldr_dates_times, "~> 2.1"},
+      {:ex_cldr_lists, "~> 2.2"},
+      {:ex_cldr_territories, "~> 2.0"},
+      {:ex_cldr_units, "~> 2.5"},
+      {:jason, "~> 1.1"},
       {:yaml_elixir, "~> 2.0"},
-      {:credo, "~> 0.9.0", only: [:dev, :test], runtime: false}
+      {:credo, "~> 1.1", only: [:dev, :test], runtime: false}
     ]
   end
 end
