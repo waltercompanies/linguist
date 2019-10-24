@@ -3,8 +3,8 @@
   flash: [
     notice: [
       alert: "Alert!",
-      hello: "hello %{first} %{last}",
-      bye: "bye now, %{name}!"
+      hello: "hello {{first}} {{last}}",
+      bye: "bye now, {{name}}!"
     ]
   ],
   users: [
@@ -13,9 +13,9 @@
       title: "Profiles"
     ]
   ],
-  escaped: "%%{escaped}",
+  escaped: "\\{{escaped}",
   apple: [
-    one: "%{count} apple",
-    other: "%{count} apples"
+    one: "{{count}} apple",
+    other: "{{count}} apples"
   ]
 ]

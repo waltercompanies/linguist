@@ -31,15 +31,15 @@ defmodule Linguist.Compiler do
 
   @interpol_rgx ~r/
                    (?<head>)
-                   (?<!%) %{.+?}
+                   (?<!\\) {{.+?}}
                    (?<tail>)
                    /x
   def interpol_rgx do
     @interpol_rgx
   end
 
-  @escaped_interpol_rgx ~r/%%{/
-  @simple_interpol "%{"
+  @escaped_interpol_rgx ~r/\\{{/
+  @simple_interpol "{{"
 
   def compile(translations) do
     langs = Keyword.keys(translations)
@@ -107,8 +107,8 @@ defmodule Linguist.Compiler do
     @interpol_rgx
     |> Regex.split(string, on: [:head, :tail])
     |> Enum.reduce("", fn
-      <<"%{" <> rest>>, acc ->
-        key = String.to_atom(String.trim_trailing(rest, "}"))
+      <<"{{" <> rest>>, acc ->
+        key = String.to_atom(String.trim_trailing(rest, "}}"))
         bindings = Macro.var(var, __MODULE__)
 
         quote do

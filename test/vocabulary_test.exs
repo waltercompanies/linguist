@@ -11,13 +11,13 @@ defmodule VocabularyTest do
       "fr",
       flash: [
         notice: [
-          hello: "salut %{first} %{last}"
+          hello: "salut {{first}} {{last}}"
         ],
-        interpolation_at_beginning: "%{name} at beginning"
+        interpolation_at_beginning: "{{name}} at beginning"
       ],
       apple: [
-        one: "%{count} Pomme",
-        other: "%{count} pommes"
+        one: "{{count}} Pomme",
+        other: "{{count}} pommes"
       ]
     )
   end

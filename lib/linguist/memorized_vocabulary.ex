@@ -74,8 +74,8 @@ defmodule Linguist.MemorizedVocabulary do
           Compiler.interpol_rgx()
           |> Regex.split(string, on: [:head, :tail])
           |> Enum.reduce("", fn
-            <<"%{" <> rest>>, acc ->
-              key = String.to_atom(String.trim_trailing(rest, "}"))
+            <<"{{" <> rest>>, acc ->
+              key = String.to_atom(String.trim_trailing(rest, "}}"))
 
               acc <> to_string(Keyword.fetch!(bindings, key))
 
