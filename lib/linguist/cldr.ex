@@ -1,6 +1,6 @@
 defmodule Linguist.Cldr do
   use Cldr,
-    default_locale: "en",
-    locales: ["fr", "en", "es"],
+    locales: ["en", "nl"],
+    default_locale: "nl",
     providers: [Cldr.Number, Cldr.DateTime, Cldr.List, Cldr.Territory, Cldr.Unit]
 end

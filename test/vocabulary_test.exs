@@ -3,7 +3,7 @@ defmodule VocabularyTest do
 
   defmodule I18n do
     use Linguist.Vocabulary
-    locale("es", Path.join([__DIR__, "es.yml"]))
+    locale("nl", Path.join([__DIR__, "nl.yml"]))
 
     locale("en", Path.join([__DIR__, "en.exs"]))
 
@@ -23,7 +23,7 @@ defmodule VocabularyTest do
   end
 
   test "it returns locales" do
-    assert ["fr", "en", "es"] == I18n.locales()
+    assert ["fr", "en", "nl"] == I18n.locales()
   end
 
   test "it handles translations at rool level" do
@@ -99,9 +99,9 @@ defmodule VocabularyTest do
       assert I18n.t!("en", "apple", count: 2) == "2 apples"
     end
 
-    test "pluralizes Spanish correctly" do
-      assert I18n.t!("es", "apple", count: 1) == "1 manzana"
-      assert I18n.t!("es", "apple", count: 2) == "2 manzanas"
+    test "pluralizes Dutch correctly" do
+      assert I18n.t!("nl", "apple", count: 1) == "1 appel"
+      assert I18n.t!("nl", "apple", count: 2) == "2 appels"
     end
 
     test "throws an error when a pluralized string is not given a count" do
@@ -112,6 +112,6 @@ defmodule VocabularyTest do
   end
 
   test "translations in yaml files are loaded successfully" do
-    assert I18n.t!("es", "flash.notice.hello", first: 123, last: "mccord") == "hola 123 mccord"
+    assert I18n.t!("nl", "flash.notice.hello", first: 123, last: "mccord") == "hallo 123 mccord"
   end
 end

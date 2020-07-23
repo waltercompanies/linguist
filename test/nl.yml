@@ -1,0 +1,15 @@
+---
+foo: "bar"
+flash:
+  notice:
+    alert: "Let op!"
+    hello: "hallo {{first}} {{last}}"
+    bye: "tot ziens, {{name}}!"
+users:
+  title: "Gebruikers"
+  profiles:
+    title: "Profielen"
+escaped: "\\{{escaped}}"
+apple:
+  one: "{{count}} appel"
+  other: "{{count}} appels"
