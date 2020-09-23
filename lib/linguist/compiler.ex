@@ -77,7 +77,7 @@ defmodule Linguist.Compiler do
       if Keyword.keyword?(val) do
         deftranslations(locale, path, val)
       else
-        quote do
+        quote generated: true do
           def t(locale, path, bindings) do
             pluralization_key = Application.fetch_env!(:linguist, :pluralization_key)
 
