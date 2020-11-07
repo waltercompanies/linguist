@@ -42,7 +42,9 @@ defmodule Linguist.Compiler do
   @simple_interpol "{{"
 
   def compile(translations) do
-    langs = Keyword.keys(translations)
+    langs =
+      translations
+      |> Enum.map(fn({key, _list}) -> key end)
 
     translations =
       for {locale, source} <- translations do
