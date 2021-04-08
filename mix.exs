@@ -22,7 +22,7 @@ defmodule Linguist.Mixfile do
   end
 
   def application do
-    [applications: [:yaml_elixir]]
+    [applications: [:yaml_elixir, :ex_cldr]]
   end
 
   defp deps do
